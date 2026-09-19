@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Krishna Museum Kurukshetra</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h2>Krishna Museum</h2>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/travel">Travel</a></li>
+        <li><a href="/artefacts">Artefacts</a></li>
+        <li><a href="/timeline">Timeline</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/wishlist">❤️ Wishlist (<span class="wishlist-counter-badge">0</span>)</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
+   <div class="auth-buttons">
+    <a href="/login" id="loginBtn" class="btn">Login</a>
+    <a href="/register" id="registerBtn" class="btn">Register</a>
+    <a href="/dashboard" id="dashboardBtn" class="btn" style="display:none;">Dashboard</a>
+    <a href="/admin" id="adminBtn" class="btn" style="display:none;">Admin</a>
+    <button id="logoutBtn" onclick="logout()" class="btn">Logout</button>
+    <span id="welcomeText" style="margin-left:10px; color:#bb86fc;"></span>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>KRISHNA MUSEUM</h1>
+    <p>Kurukshetra • Gateway to Indian Heritage & Mahabharata Culture</p>
+</section>
+
+<!-- IMAGE SECTION -->
+<section class="gallery">
+    <h2>Explore the Museum</h2>
+    <div class="images">
+        <img src="/images/museum1.jpg" onclick="zoomHomepageImage('/images/museum1.jpg')" style="cursor: pointer;">
+        <img src="/images/museum2.jpg" onclick="zoomHomepageImage('/images/museum2.jpg')" style="cursor: pointer;">
+        <img src="/images/museum3.jpg" onclick="zoomHomepageImage('/images/museum3.jpg')" style="cursor: pointer;">
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+    <h2>About Krishna Museum</h2>
+    <p>
+        Located in Kurukshetra, the Krishna Museum is dedicated to the life and teachings 
+        of Lord Krishna. It showcases sculptures, paintings, manuscripts, and artefacts 
+        from various periods reflecting Indian mythology and culture.
+    </p>
+</section>
+
+<!-- FLOORS -->
+<section class="floors">
+    <h2>Museum Floors</h2>
+
+    <div class="floor-card">
+        <h3>Floor 1</h3>
+        <p>Sculptures of Krishna, Vishnu, and ancient deities.</p>
+    </div>
+
+    <div class="floor-card">
+        <h3>Floor 2</h3>
+        <p>Paintings and manuscripts from Mahabharata and Bhagavad Gita.</p>
+    </div>
+
+    <div class="floor-card">
+        <h3>Floor 3</h3>
+        <p>Coins, ritual objects, and historical items.</p>
+    </div>
+</section>
+
+<!-- SEARCH -->
+<section class="search-section">
+    <h2>Search Artefacts</h2>
+    <input type="text" id="searchInput" placeholder="Search by name, dynasty, deity...">
+    <button onclick="search()">Search</button>
+</section>
+
+<!-- ARTEFACTS -->
+<section>
+    <h2 style="text-align:center;">Featured Artefacts</h2>
+   <div id="artefacts-container" class="artefact-grid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Krishna Museum Kurukshetra</p>
+</footer>
+<div id="artefactModal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="detail-modal">
+
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+
+    <div class="detail-layout">
+      
+      <div class="detail-left">
+        <img id="detailImage">
+      </div>
+
+      <div class="detail-right">
+        <div id="detailCode"></div>
+        <h2 id="detailName"></h2>
+        <p id="detailType"></p>
+
+        <div class="detail-grid">
+          <div><strong>Material:</strong> <span id="detailMaterial"></span></div>
+          <div><strong>Dynasty:</strong> <span id="detailDynasty"></span></div>
+          <div><strong>Region:</strong> <span id="detailRegion"></span></div>
+          <div><strong>Deity:</strong> <span id="detailDeity"></span></div>
+          <div><strong>Museum:</strong> <span id="detailMuseum"></span></div>
+        </div>
+
+        <p id="detailDesc"></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- HOMEPAGE IMAGE MODAL -->
+<div id="homepageImageModal" class="modal-overlay" onclick="closeHomepageImageModal(event)">
+  <div class="detail-modal">
+    <button class="modal-close" onclick="closeHomepageImageModalDirect()">✕</button>
+    <div style="text-align: center; padding: 20px;">
+      <img id="homepageImage" style="max-width: 90%; max-height: 80vh; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    </div>
+  </div>
+</div>
+
+<script src="/js/wishlist.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/animations.js"></script>
+<script src="/js/theme-toggle.js"></script>
+</body>
+</html>

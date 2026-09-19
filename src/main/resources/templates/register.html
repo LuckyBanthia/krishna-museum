@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h2>Krishna Museum</h2>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/travel">Travel</a></li>
+        <li><a href="/artefacts">Artefacts</a></li>
+        <li><a href="/timeline">Timeline</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/wishlist">❤️ Wishlist (<span class="wishlist-counter-badge">0</span>)</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <div class="auth-buttons">
+        <a href="/login" id="loginBtn" class="btn">Login</a>
+        <a href="/register" id="registerBtn" class="btn">Register</a>
+        <a href="/dashboard" id="dashboardBtn" class="btn" style="display:none;">Dashboard</a>
+        <a href="/admin" id="adminBtn" class="btn" style="display:none;">Admin</a>
+        <button id="logoutBtn" onclick="logout()" class="btn">Logout</button>
+        <span id="welcomeText" style="margin-left:10px; color:#bb86fc;"></span>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Register</h1>
+</section>
+
+<div class="form-box">
+    <input type="text" id="name" placeholder="Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="register()">Register</button>
+</div>
+
+<script src="/js/wishlist.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/auth.js"></script>
+
+</body>
+</html>

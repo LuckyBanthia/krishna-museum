@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Dashboard - Krishna Museum</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h2>Krishna Museum</h2>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/travel">Travel</a></li>
+        <li><a href="/artefacts">Artefacts</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/wishlist">❤️ Wishlist (<span class="wishlist-counter-badge">0</span>)</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
+    <div class="auth-buttons">
+        <a href="/login" id="loginBtn" class="btn">Login</a>
+        <a href="/register" id="registerBtn" class="btn">Register</a>
+        <a href="/dashboard" id="dashboardBtn" class="btn" style="display:none;">Dashboard</a>
+        <a href="/admin" id="adminBtn" class="btn" style="display:none;">Admin</a>
+        <button id="logoutBtn" onclick="logout()" class="btn">Logout</button>
+        <span id="welcomeText" style="margin-left:10px; color:#bb86fc;"></span>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <h1>My Dashboard</h1>
+    <p>Manage your museum experience</p>
+</section>
+
+<!-- DASHBOARD CONTAINER -->
+<div class="dashboard-container">
+    
+    <!-- PROFILE SECTION -->
+    <div id="profile-section"></div>
+
+    <!-- DASHBOARD STATS -->
+    <h2 style="text-align:center; color:#bb86fc; margin-top:40px;">Your Activity</h2>
+    <div id="dashboard-stats" class="dashboard-grid"></div>
+
+    <!-- WISHLIST SECTION -->
+    <div class="wishlist-section" style="margin-top:40px;">
+        <h2 style="color:#bb86fc; margin-top:0;">❤️ My Saved Wishlist</h2>
+        <div id="wishlist-container" class="artefact-grid"></div>
+    </div>
+
+    <!-- REGISTERED EVENTS SECTION -->
+    <div class="registered-events-section" style="margin-top:40px;">
+        <h2 style="color:#bb86fc; margin-top:0;">🎫 My Registered Events</h2>
+        <div id="registered-events"></div>
+    </div>
+
+</div>
+
+<!-- ARTEFACT DETAIL MODAL -->
+<div id="artefactModal" class="modal-overlay" onclick="closeModal(event)">
+  <div class="detail-modal">
+    <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    <div class="detail-layout">
+      <div class="detail-left">
+        <img id="detailImage">
+      </div>
+      <div class="detail-right">
+        <div id="detailCode" class="detail-code"></div>
+        <h2 id="detailName"></h2>
+        <p id="detailType"></p>
+        <div class="detail-grid">
+          <div><strong>Material:</strong> <span id="detailMaterial"></span></div>
+          <div><strong>Dynasty:</strong> <span id="detailDynasty"></span></div>
+          <div><strong>Region:</strong> <span id="detailRegion"></span></div>
+          <div><strong>Deity:</strong> <span id="detailDeity"></span></div>
+          <div><strong>Museum:</strong> <span id="detailMuseum"></span></div>
+        </div>
+        <p id="detailDesc" class="detail-desc"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer style="text-align:center; padding:30px; margin-top:50px;">
+    <p>© 2026 Krishna Museum Kurukshetra | All Rights Reserved</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/js/wishlist.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/animations.js"></script>
+<script src="/js/dashboard.js"></script>
+<script src="/js/theme-toggle.js"></script>
+</body>
+</html>

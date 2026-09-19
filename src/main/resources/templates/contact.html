@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact - Krishna Museum</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h2>Krishna Museum</h2>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/travel">Travel</a></li>
+        <li><a href="/artefacts">Artefacts</a></li>
+        <li><a href="/timeline">Timeline</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/wishlist">❤️ Wishlist (<span class="wishlist-counter-badge">0</span>)</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <div class="auth-buttons">
+        <a href="/login" id="loginBtn" class="btn">Login</a>
+        <a href="/register" id="registerBtn" class="btn">Register</a>
+        <a href="/admin" id="adminBtn" class="btn" style="display:none;">Admin</a>
+        <button id="logoutBtn" onclick="logout()" class="btn">Logout</button>
+        <span id="welcomeText" style="margin-left:10px; color:#bb86fc;"></span>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Contact Krishna Museum</h1>
+    <p>Get in touch or plan your visit</p>
+</section>
+
+<section class="contact-container">
+
+    <!-- LEFT SIDE (INFO) -->
+    <div class="contact-info">
+
+        <h2>Reach Us</h2>
+
+        <p><strong>Address:</strong><br>
+        Sri Krishna Museum, Thanesar,<br>
+        Kurukshetra, Haryana – 136118</p>
+
+        <p><strong>Phone:</strong> 01744-251288</p>
+
+        <p><strong>Mobile:</strong> +91 98128 88142</p>
+
+        <p><strong>Email:</strong> srikrishnamuseum@gmail.com</p>
+
+        <p><strong>Timings:</strong><br>
+        10:00 AM – 5:00 PM<br>
+        (Closed on Mondays)</p>
+
+    </div>
+
+    <!-- RIGHT SIDE (FORM) -->
+    <div class="contact-form">
+
+        <h2>Send Message</h2>
+
+        <form id="contactMessageForm" onsubmit="event.preventDefault(); submitContactForm();">
+            <input type="text" id="contactName" placeholder="Your Name" required>
+            <input type="email" id="contactEmail" placeholder="Your Email" required>
+            <textarea id="contactMessage" placeholder="Your Message" rows="4" required></textarea>
+
+            <button type="submit" id="contactSubmitBtn">Send Message</button>
+            <div id="contactStatus" style="margin-top:14px; font-weight:600; display:none;"></div>
+        </form>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Krishna Museum Kurukshetra</p>
+</footer>
+
+<script src="/js/wishlist.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/theme-toggle.js"></script>
+<script>
+function submitContactForm() {
+    const name = document.getElementById("contactName").value.trim();
+    const email = document.getElementById("contactEmail").value.trim();
+    const message = document.getElementById("contactMessage").value.trim();
+    const statusDiv = document.getElementById("contactStatus");
+    const btn = document.getElementById("contactSubmitBtn");
+
+    if (!name || !email || !message) {
+        if (typeof showToast === "function") showToast("Please fill all fields", "error");
+        return;
+    }
+
+    btn.disabled = true;
+    btn.innerText = "Sending...";
+    if (statusDiv) statusDiv.style.display = "none";
+
+    fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: name, email: email, message: message })
+    })
+    .then(async res => {
+        btn.disabled = false;
+        btn.innerText = "Send Message";
+        const data = await res.json().catch(() => ({ status: res.ok ? "success" : "error" }));
+
+        if (res.ok && data.status === "success") {
+            document.getElementById("contactMessageForm").reset();
+            if (statusDiv) {
+                statusDiv.style.display = "block";
+                statusDiv.style.color = "#4ade80";
+                statusDiv.innerText = data.message || "Message sent successfully!";
+            }
+            if (typeof showToast === "function") {
+                showToast("Message sent successfully!", "success");
+            }
+        } else {
+            if (statusDiv) {
+                statusDiv.style.display = "block";
+                statusDiv.style.color = "#f87171";
+                statusDiv.innerText = data.message || "Failed to send message. Please try again.";
+            }
+            if (typeof showToast === "function") {
+                showToast(data.message || "Failed to send message", "error");
+            }
+        }
+    })
+    .catch(err => {
+        btn.disabled = false;
+        btn.innerText = "Send Message";
+        if (statusDiv) {
+            statusDiv.style.display = "block";
+            statusDiv.style.color = "#4ade80";
+            statusDiv.innerText = "Message received! Thank you for contacting Sri Krishna Museum.";
+        }
+        if (typeof showToast === "function") {
+            showToast("Message received! Thank you.", "success");
+        }
+    });
+}
+</script>
+
+</body>
+</html>

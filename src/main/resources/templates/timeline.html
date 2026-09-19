@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Historical Timeline - Krishna Museum</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h2>Krishna Museum</h2>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/travel">Travel</a></li>
+        <li><a href="/artefacts">Artefacts</a></li>
+        <li><a href="/timeline">Timeline</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/wishlist">❤️ Wishlist (<span class="wishlist-counter-badge">0</span>)</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+    <div class="auth-buttons">
+        <a href="/login" id="loginBtn" class="btn">Login</a>
+        <a href="/register" id="registerBtn" class="btn">Register</a>
+        <a href="/dashboard" id="dashboardBtn" class="btn" style="display:none;">Dashboard</a>
+        <a href="/admin" id="adminBtn" class="btn" style="display:none;">Admin</a>
+        <button id="logoutBtn" onclick="logout()" class="btn">Logout</button>
+        <span id="welcomeText" style="margin-left:10px; color:#bb86fc;"></span>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <h1>Historical Timeline</h1>
+    <p>Journey through centuries of heritage and culture</p>
+</section>
+
+<!-- TIMELINE FILTERS -->
+<div style="text-align:center; padding:20px;">
+    <button class="btn" style="margin:5px;" onclick="filterTimelineByDynasty('Maurya')">Maurya</button>
+    <button class="btn" style="margin:5px;" onclick="filterTimelineByDynasty('Gupta')">Gupta</button>
+    <button class="btn" style="margin:5px;" onclick="filterTimelineByDynasty('Mughal')">Mughal</button>
+    <button class="btn" style="margin:5px;" onclick="loadTimeline()">All Periods</button>
+</div>
+
+<!-- TIMELINE CONTAINER -->
+<div class="timeline-container">
+    <div id="timeline-container"></div>
+</div>
+
+<!-- ARTEFACT DETAIL MODAL -->
+<div id="artefactModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="detail-modal">
+        <button class="modal-close" onclick="closeModalDirect()">✕</button>
+        <div class="detail-layout">
+            <div class="detail-left">
+                <img id="detailImage">
+            </div>
+            <div class="detail-right">
+                <div id="detailCode" class="detail-code"></div>
+                <h2 id="detailName"></h2>
+                <p id="detailType"></p>
+                <div class="detail-grid">
+                    <div><strong>Material:</strong> <span id="detailMaterial"></span></div>
+                    <div><strong>Dynasty:</strong> <span id="detailDynasty"></span></div>
+                    <div><strong>Region:</strong> <span id="detailRegion"></span></div>
+                    <div><strong>Deity:</strong> <span id="detailDeity"></span></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer style="text-align:center; padding:30px; margin-top:50px;">
+    <p>© 2026 Krishna Museum Kurukshetra | Explore History</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/js/wishlist.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/animations.js"></script>
+<script src="/js/timeline.js"></script>
+<script src="/js/theme-toggle.js"></script>
+</body>
+</html>

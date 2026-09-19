@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h2>Admin Panel</h2>
+    <a href="/">Home</a>
+    
+    <div class="auth-buttons">
+        <a href="/login" id="loginBtn" class="btn">Login</a>
+        <a href="/register" id="registerBtn" class="btn">Register</a>
+        <a href="/admin" id="adminBtn" class="btn" style="display:none;">Admin</a>
+        <button id="logoutBtn" onclick="logout()" class="btn">Logout</button>
+        <span id="welcomeText" style="margin-left:10px; color:#bb86fc;"></span>
+    </div>
+</nav>
+
+<section class="hero">
+    <h1>Admin Dashboard</h1>
+</section>
+
+<!-- TAB SELECTOR -->
+<div style="text-align: center; padding: 20px; margin-bottom: 30px;">
+    <button class="btn" onclick="switchTab('artefact')" id="artefactTab" style="margin-right:10px;">Add Artefact</button>
+    <button class="btn" onclick="switchTab('event')" id="eventTab">Add Event</button>
+</div>
+
+<!-- ADD ARTEFACT FORM -->
+<div id="artefactForm" class="form-box">
+    <h2 style="text-align:center; color:#bb86fc; margin-top:0;">Add Artefact</h2>
+    <input type="text" id="code" placeholder="Code">
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="type" placeholder="Type">
+    <input type="text" id="material" placeholder="Material">
+    <input type="text" id="dynasty" placeholder="Dynasty">
+    <input type="text" id="region" placeholder="Region">
+    <input type="text" id="deity" placeholder="Deity">
+    <input type="text" id="museum" placeholder="Museum">
+    <input type="text" id="description" placeholder="Description">
+    <input type="text" id="imageUrl" placeholder="Image URL">
+    <input type="number" id="floor" placeholder="Floor">
+    <button onclick="addArtefact()">Add Artefact</button>
+</div>
+
+<!-- ADD EVENT FORM -->
+<div id="eventForm" class="form-box" style="display:none;">
+    <h2 style="text-align:center; color:#bb86fc; margin-top:0;">Add Event</h2>
+    <input type="text" id="eventTitle" placeholder="Event Title">
+    <input type="text" id="eventDescription" placeholder="Event Description">
+    <input type="date" id="eventDate" placeholder="Event Date">
+    <input type="text" id="eventLocation" placeholder="Location">
+    <select id="eventCategory" style="padding:10px; border-radius:8px; border:1px solid #4b0082; background:#1a1a1a; color:#e0e0e0; font-size:14px;">
+        <option value="Exhibition">Exhibition</option>
+        <option value="Workshop">Workshop</option>
+        <option value="Lecture">Lecture</option>
+        <option value="Cultural Program">Cultural Program</option>
+    </select>
+    <input type="text" id="eventImageUrl" placeholder="Event Image URL">
+    <input type="number" id="eventCapacity" placeholder="Event Capacity">
+    <button onclick="addEvent()">Add Event</button>
+</div>
+
+<script src="/js/script.js"></script>
+<script src="/js/admin.js"></script>
+
+</body>
+</html>

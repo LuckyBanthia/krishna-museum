@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Museum Events - Krishna Museum</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <h2>Krishna Museum</h2>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/travel">Travel</a></li>
+        <li><a href="/artefacts">Artefacts</a></li>
+        <li><a href="/timeline">Timeline</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/wishlist">❤️ Wishlist (<span class="wishlist-counter-badge">0</span>)</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+    <div class="auth-buttons">
+        <a href="/login" id="loginBtn" class="btn">Login</a>
+        <a href="/register" id="registerBtn" class="btn">Register</a>
+        <a href="/dashboard" id="dashboardBtn" class="btn" style="display:none;">Dashboard</a>
+        <a href="/admin" id="adminBtn" class="btn" style="display:none;">Admin</a>
+        <button id="logoutBtn" onclick="logout()" class="btn">Logout</button>
+        <span id="welcomeText" style="margin-left:10px; color:#bb86fc;"></span>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <h1>Museum Events</h1>
+    <p>Discover workshops, exhibitions, and cultural programs</p>
+</section>
+
+<!-- EVENT FILTERS -->
+<div style="text-align:center; padding:20px;">
+    <button class="btn" style="margin:5px;" onclick="filterEventsByCategory('Exhibition')">Exhibitions</button>
+    <button class="btn" style="margin:5px;" onclick="filterEventsByCategory('Workshop')">Workshops</button>
+    <button class="btn" style="margin:5px;" onclick="filterEventsByCategory('Lecture')">Lectures</button>
+    <button class="btn" style="margin:5px;" onclick="loadUpcomingEvents()">All Events</button>
+</div>
+
+<!-- EVENTS GRID -->
+<div id="events-container" class="events-grid"></div>
+
+<!-- EVENT DETAIL MODAL -->
+<div id="eventModal" class="modal-overlay" onclick="closeEventModal(event)">
+  <div class="detail-modal">
+    <!-- Modal content will be populated by JavaScript -->
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer style="text-align:center; padding:30px; margin-top:50px;">
+    <p>© 2026 Krishna Museum Kurukshetra | Events & Cultural Programs</p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/js/wishlist.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/animations.js"></script>
+<script src="/js/events.js"></script>
+<script src="/js/theme-toggle.js"></script>
+</body>
+</html>
