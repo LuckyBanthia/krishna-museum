@@ -43,3 +43,6 @@ build/
 Thumbs.db
 desktop.ini
 *.ini
+
+# Nested legacy folder
+krishna-museum/
